@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Start Node.js application
-        run: node index.ts &
+        run: npm run dev &
         # Використовуємо `&`, щоб запустити додаток у фоновому режимі
 
       - name: Install k6
