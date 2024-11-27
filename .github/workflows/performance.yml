@@ -12,6 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16 # Вкажіть версію Node.js, яку використовує ваш проєкт
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start Node.js application
+        run: node index.ts &
+        # Використовуємо `&`, щоб запустити додаток у фоновому режимі
+
       - name: Install k6
         run: |
           sudo apt update
