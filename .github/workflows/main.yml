@@ -3,7 +3,7 @@ name: SonarQube Scan
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -24,10 +24,10 @@ jobs:
 
       - name: Run SonarQube scan
         env:
-          SONAR_TOKEN: 988843c5b5ab30c1d2c2b1fac519977ac7f11e73
+          SONAR_TOKEN: sqp_b60ea7ceea8d175d8a67f01419c17b2a8df398e2
         run: |
           npx sonar-scanner \
-            -Dsonar.organization=medreres \
-            -Dsonar.projectKey=medreres_test-fp \
+            -Dsonar.projectKey=fp \
             -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.host.url=https://fc07-195-72-147-12.ngrok-free.app \
+            -Dsonar.login=sqp_b60ea7ceea8d175d8a67f01419c17b2a8df398e2

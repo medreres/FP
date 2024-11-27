@@ -1,0 +1,23 @@
+name: Performance Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install k6
+        run: sudo apt-get install -y k6
+
+      - name: Run performance test and save to InfluxDB
+        # env: # Передаємо токен та інші налаштування через змінні середовища
+          # K6_INFLUXDB_ORGANIZATION: my-org        # Замість my-org використовуйте вашу організацію
+          # K6_INFLUXDB_BUCKET: k6-bucket          # Замість k6-bucket використовуйте ваш bucket
+          # K6_INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}  # Використовуйте GitHub Secrets для токена
+        run: k6 run --out influxdb=https://9e2b-92-253-236-196.ngrok-free.app test.js
